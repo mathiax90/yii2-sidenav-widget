@@ -1,0 +1,27 @@
+{
+    "name": "mathiax90/yii2-sidenav-widget",
+    "type": "yii2-extension",
+
+    "description": "side nav",
+    "keywords": ["yii2", "sidenav", "menu", "widget"],
+    "license": "BSD-3-Clause",
+    "support": {
+        "source": "https://github.com/mathiax90/yii2-sidenav-widget"
+    },
+    "authors": [
+        {
+            "name": "Dmitriy Tsoy",
+            "email": "mathiax90@gmail.com"
+        }
+    ],
+
+    "require": {
+        "yiisoft/yii2": "~2.0.0"
+    },
+
+    "autoload": {
+        "psr-4": {
+            "mathiax90\\sidenav\\": ""
+        }
+    }
+}
