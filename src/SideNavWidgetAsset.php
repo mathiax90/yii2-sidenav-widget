@@ -1,5 +1,5 @@
 <?php
-namespace mathiax90\SideNavWidget;
+namespace mathiax90\sidenav;
 
 /*
  * To change this license header, choose License Headers in Project Properties.

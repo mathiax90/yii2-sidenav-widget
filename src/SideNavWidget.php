@@ -1,9 +1,9 @@
 <?php 
-namespace mathiax90\SideNavWidget;
+namespace mathiax90\sidenav;
 
 use yii\base\Widget;
 //use yii\helpers\Html;
-use mathiax90\SideNavWidget\SideNavWidgetAsset;
+use mathiax90\sidenav\SideNavWidgetAsset;
 
 class SideNavWidget extends Widget
 {
