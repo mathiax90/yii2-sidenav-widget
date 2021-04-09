@@ -19,7 +19,7 @@
 
     "autoload": {
         "psr-4": {
-            "mathiax90\\sidenav\\": ""
+            "mathiax90\\sidenav\\": "src"
         }
     }
 }
