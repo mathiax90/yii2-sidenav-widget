@@ -15,14 +15,12 @@ namespace mathiax90\sidenav;
  */
 class SideNavWidgetAsset extends AssetBundle {
 
-    /**
-     * @inheritdoc
-     */
-    public function init() {
-        $this->setSourcePath('@vendor/sidenav');
-        $this->setupAssets('css', ['css/sidenav.css']);
-        $this->setupAssets('js', ['js/sidenav.js']);
-        parent::init();
-    }
+    public $sourcePath = '@vendor/mathiax90/yii2-sidenav-widget/src/assets';
+    public $css = [
+        'css/sidenav.css',
+    ];
+    public $js = [
+        'js/sidenav.js'
+    ];
 
 }
