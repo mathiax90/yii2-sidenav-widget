@@ -7,6 +7,7 @@ namespace mathiax90\sidenav;
  * and open the template in the editor.
  */
 
+use yii\web\AssetBundle;
 
 /**
  * Description of newPHPClass
