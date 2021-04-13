@@ -32,7 +32,7 @@ class SideNavWidget extends Widget {
                 if ($level == 0) {
                     throw new Exception('SideNavWidget has only 3 levels (hardcoded)!');
                 } else {
-                    $result .= echo_items($item, $level - 1);
+                    $result .= $this->echo_items($item, $level - 1);
                 }
             } else {
                 if (!(isset($item['label']) and isset($item['url']))) {
