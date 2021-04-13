@@ -38,7 +38,7 @@ class SideNavWidget extends Widget {
                 if (!(isset($item['label']) and isset($item['url']))) {
                     throw new Exception('no label or url in item');
                 } else {
-                    $result .= '<li><a href="' . $item['url'] . '">' . $item['label'] . '</a></li>';
+                    $result .= '<li><a href="' . $item['url'][0] . '">' . $item['label'] . '</a></li>';
                 }
             }
 
