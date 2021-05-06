@@ -3,7 +3,8 @@
 namespace mathiax90\sidenav;
 
 use yii\base\Widget;
-//use yii\helpers\Html;
+use yii\base\Exception;
+use Yii;
 use mathiax90\sidenav\SideNavWidgetAsset;
 
 class SideNavWidget extends Widget {
@@ -15,7 +16,7 @@ class SideNavWidget extends Widget {
         parent::init();
         SideNavWidgetAsset::register($this->getView());
         $html = '<div class="sidenav" id="mySidenav"><ul class="nav nav-pills nav-stacked kv-sidenav">';
-
+        Yii::info(print_r($this->items, true));
         $html .= $this->echo_items($this->items, 2);
 
         $html = $html . "</ul></div>";
@@ -24,34 +25,31 @@ class SideNavWidget extends Widget {
 
     private function echo_items($items, $level) {
         $result = "";
+        Yii::info(print_r($items, true));
         foreach ($items as $item) {
             if (!is_array($item)) {
                 throw new Exception('item isn\'t array!');
-            }
-            if (array_key_exists('items', $item)) {
-                if ($level == 0) {
-                    throw new Exception('SideNavWidget has only 3 levels (hardcoded)!');
-                } else {
-                    $result .= $this->echo_items($item, $level - 1);
-                }
             } else {
-                if (!(isset($item['label']) and isset($item['url']))) {
-                    throw new Exception('no label or url in item');
+                if (array_key_exists('items', $item)) {
+                    if ($level == 0) {
+                        throw new Exception('SideNavWidget has only 3 levels (hardcoded)!');
+                    } else {
+                        if (!(isset($item['label']) )) {
+                            throw new Exception('no label in' . PHP_EOL . print_r($item, true));
+                        } else {
+                            $result .= '<li><a href="#" class="kv-toggle"><span class="opened" style="display:none"><i class="indicator glyphicon glyphicon-chevron-down"></i></span><span class="closed"><i class="indicator glyphicon glyphicon-chevron-right"></i></span>' . $item["label"] . '</a><ul class="nav nav-pills nav-stacked">'
+                                    . $this->echo_items($item['items'], $level - 1)
+                                    . '</ul></li>';
+                        }
+                    }
                 } else {
-                    $result .= '<li><a href="' . $item['url'][0] . '">' . $item['label'] . '</a></li>';
+                    if (!(isset($item['label']) or!isset($item['url']))) {
+                        throw new Exception('no label or url in item');
+                    } else {
+                        $result .= '<li><a href="' . $item['url'][0] . '">' . ($level != 2 ? "» " : "") . $item['label'] . '</a></li>';
+                    }
                 }
             }
-
-            // if (array_key_exists('label', $item))
-            // {
-            // $result .= '<li><a href="' . $item['url'][0] . '">' . $item['label'] . '</a></li>';
-            // }else {
-            // if ($level == 0){
-            // throw new Exception('SideNavWidget item has no label on level 0!');
-            // } else {
-            // $result .= echo_items($item, $level-1);
-            // }
-            // }
         }
         return $result;
     }

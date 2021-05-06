@@ -23,5 +23,8 @@ class SideNavWidgetAsset extends AssetBundle {
     public $js = [
         'js/sidenav.js'
     ];
+    public $publishOptions = [
+        'forceCopy' => true,
+    ];
 
 }
